@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My GF? ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff0844,#ff4d6d,#ff758f);
+}
+
+.container{
+    text-align:center;
+    color:white;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    text-shadow:0 0 15px rgba(255,255,255,0.8);
+}
+
+p{
+    font-size:1.2rem;
+    margin-bottom:30px;
+}
+
+.buttons{
+    position:relative;
+    width:400px;
+    height:180px;
+    margin:auto;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:1.2rem;
+    transition:0.3s;
+}
+
+#yes{
+    background:white;
+    color:#ff0844;
+    font-weight:bold;
+}
+
+#yes:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    position:fixed;
+    background:#222;
+    color:white;
+    left:60%;
+    top:55%;
+}
+
+#result{
+    margin-top:30px;
+    font-size:2rem;
+    display:none;
+    animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+    from{
+        transform:scale(0);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation:float 6s linear infinite;
+    opacity:0.8;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Will You Be My GF? ❤️</h1>
+    <p>You make my days brighter ✨</p>
+
+    <div class="buttons">
+        <button id="yes">YES ❤️</button>
+        <button id="no">NO 😅</button>
+    </div>
+
+    <div id="result">
+        YAYYY!! ❤️🥰<br>
+        You just made me the happiest person alive!
+    </div>
+</div>
+
+<script>
+
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", () => {
+
+    const maxX = window.innerWidth - 150;
+    const maxY = window.innerHeight - 100;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+});
+
+document.getElementById("yes").addEventListener("click", () => {
+
+    document.querySelector(".buttons").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    createHeartBurst();
+});
+
+function createHeartBurst(){
+
+    for(let i=0;i<60;i++){
+
+        const heart=document.createElement("div");
+
+        heart.innerHTML="❤️";
+        heart.style.position="absolute";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.top=Math.random()*window.innerHeight+"px";
+        heart.style.fontSize=(20+Math.random()*30)+"px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },3000);
+    }
+}
+
+function floatingHearts(){
+
+    const heart=document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(floatingHearts,300);
+
+</script>
+
+</body>
+</html>
